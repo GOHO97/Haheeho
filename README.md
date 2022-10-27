@@ -1,6 +1,6 @@
 # Naver blog ad block (demo)
   
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/077ed9bc-71ab-4242-83af-c089d63d42c6/Untitled.png)  
+![mainPage](https://user-images.githubusercontent.com/101491213/198233349-1b1656de-57f2-4c4a-84b5-fd1a3d482d88.PNG)
   
 ### 팀원  
 윤경호  
