@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#boardArea {
+	width: 80%;
+	margin-left: 80px;
+}
+
+#boardPostGoBtn {
+	margin-left: 800px;
+	
+}
+
+#boardSearchTab {
+	width: 50%;
+	height: 30px;
+}

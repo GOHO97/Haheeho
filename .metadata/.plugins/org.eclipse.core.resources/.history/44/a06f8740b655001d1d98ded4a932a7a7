@@ -1,0 +1,74 @@
+const mainPostDiv = document.querySelector("#mainPostDiv");
+const searchInput = document.querySelector("#mainSearch");
+
+const nodeUrl = "http://192.168.0.141:6822/search.blog?query=";
+const inDBUrl = "http://192.168.0.158:6833/judge.ai?url=";
+const notInDBUrl = "http://192.168.0.158:6833/filter.judge.ai?url=";
+
+
+
+function getJudge(url, link, labelTd){
+	$.getJSON(url + link, (item) => {
+		labelTd.text(item.result);
+		let labelImg = $("<img>").attr({'src':'trafficLight.PNG', "class":"photo"});
+		labelTd.append(labelImg);
+	});
+}
+
+
+function appendTable(search){
+
+	$("#mainPostDiv").empty();
+
+	$.getJSON(nodeUrl + search, (data) => {
+		$.each(data.items, (n, item) => {
+			let label = item.label;
+			let link = item.link;
+			
+			classList.push('.like' + n);
+
+			let labelTd = $("<td></td>").text(label);
+			
+			if(label == "판독중"){
+				getJudge(notInDBUrl, link, labelTd);
+			} else if(label != "광고 기재"){
+				getJudge(inDBUrl, link, labelTd);
+				labelTd.text("판독중")
+			}
+			
+			
+			let labelImg = $("<img>").attr({'src':'trafficLight.PNG', "class":"photo"});
+			labelTd.append(labelImg);
+			let likeTd = $("<td></td>").text(`하트사진,${item.likeCount},메모사진`).attr({'id':link, 'class':'like'+n});
+			let contentTd = $("<td></td>").text(item.description);
+			let dateTd = $("<td></td>").text(item.postdate);
+			
+			let title = $("<a></a>").text(item.title).attr({'href':link, 'target':'_blank'});
+			let titleTd = $("<td></td>").append(title);
+			
+			let likeTr = $("<tr></tr>").append(likeTd);
+			let contentTr = $("<tr></tr>").append(contentTd);
+			let dateTr = $("<tr></tr>").append(dateTd);
+			let titleTr = $("<tr></tr>").append(titleTd);
+			let labelTr = $("<tr></tr>").append(labelTd);
+			
+			let table = $("<table></table>").append(labelTr, titleTr, dateTr, contentTr, likeTr);			
+			
+			$("#mainPostDiv").append(table);
+
+			
+		});
+	});
+}
+// 이벤트 나오긴 한다만 발생한 이벤트가 어디인지 구분 못 함
+// 여러 방법 다 시도 해봤는데 안 된다. 그냥 좋아요, 메모 기능 a 태그로 get방식 요청하는 식으로 해야 될 것 같다.
+function connectMainPageSearchEvent(event) {
+	if(event.keyCode == 13){
+		const search = searchInput.value;
+		searchInput.value = "";
+		appendTable(search);
+		
+	}
+}
+
+searchInput.addEventListener("keyup", connectMainPageSearchEvent);

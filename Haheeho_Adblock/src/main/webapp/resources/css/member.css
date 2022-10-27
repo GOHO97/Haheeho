@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#joinTbl {
+	height: 250px;
+}
+
+#joinTbl .joinField {
+	font-size: 10pt;
+	width: 100px;
+}
+
+#joinTbl .joinForm {
+	font-size: 10pt;
+	width: 190px;
+}
+
+#newPhoto {
+	width: 200px;
+}
