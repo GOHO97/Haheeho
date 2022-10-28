@@ -38,7 +38,7 @@ class ConMongo():
         try:
             con = MongoClient(self.ip)
             db = con.xe
-            command = db.haheeho.update_many({"_id": url, "$set":{"cd_label": label}})
+            command = db.haheeho.update_many({"_id": url}, {"$set":{"cd_label": label}})
             
             if not command.modified_count >= 1:
                 print("%s,실패" % url)
@@ -47,12 +47,12 @@ class ConMongo():
         finally:
             con.close()
     
-    def findAllContent(self):
+    def getTrainContent(self):
         try:
             con = MongoClient(self.ip)
             db = con.xe
-            blogDatas = list(db.haheeho.find({"$and": [{"cd_label":{"$ne":"광고 의심"}},{"cd_content": {"$exists":"true"}}]})) 
-
+            blogDatas = list(db.haheehoEdu.find()) 
+            # 기존 설계가 바뀜에 따라 Ai교육용 데이터를 쌓을 테이블을 따로 만들기로 했다.
             return blogDatas
         
         except Exception as e:
@@ -72,5 +72,4 @@ class ConMongo():
         except Exception as e:
             print(e)
         finally:
-            con.close()    
-        
+            con.close() 

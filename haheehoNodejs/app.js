@@ -61,32 +61,51 @@ app.get("/search.blog", (req, res) => {
         	
           
           
-          i["title"] = i["title"].replace(/<[^>]*>?/g, "").replace("&quot;", "\"").replace("&quot;", "\"").replace("&amp;", "&").replace("&gt;", ">").replace("&lt;", "<").replace("&apos;", "\'").replace("&apos;", "\'");
-          i["description"] = i["description"].replace(/<[^>]*>?/g, "").replace("&quot;", "\"").replace("&quot;", "\"").replace("&amp;", "&").replace("&gt;", ">").replace("&lt;", "<").replace("&apos;", "\'").replace("&apos;", "\'");
-          list.push(i);
+          i["title"] = i["title"].replace(/<[^>]*>?/g, "").replaceAll("&quot;", "\"").replaceAll("&amp;", "&").replaceAll("&gt;", ">").replaceAll("&lt;", "<").replaceAll("&apos;", "\'");
+          i["description"] = i["description"].replace(/<[^>]*>?/g, "").replaceAll("&quot;", "\"").replaceAll("&amp;", "&").replaceAll("&gt;", ">").replaceAll("&lt;", "<").replaceAll("&apos;", "\'");
           
+          url = i.link;
           let memberID = req.query.memberID;
-          db.haheehoUserPage.find({
-        		"$and": [
-        			{u_m_id : memberID},
-        			{u_url : url},
-        			{u_like : true}
-        		]
-        	}).count(function(e, result) {
-        		if(result == 0){
-        			i["heartPushed"] = false;
-        		}else{
-        			i["heartPushed"] = true;
-        		}
-        		list.push(i);
-        		count++;
-        		
-        		if (count == 20){
-        			res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
-        			res.write(JSON.stringify({ items: list }));
-        			res.end();
-        		}
-        	});
+          
+          if (memberID != null) {
+
+        	  db.haheehoUserPage.find({
+        		  "$and": [
+        			  {u_m_id : memberID},
+        			  {u_url : url},
+        			  {u_like : true}
+        			  ]
+        	  }).count(function(e, result) {
+        		  
+        		  if(result == 1){
+        			  i["heartPushed"] = true;
+        		  }else{
+        			  i["heartPushed"] = false;
+        		  }
+        		  
+        		  list.push(i);
+        		  count++;
+        		  
+        		  if (count == 20){
+        			  res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
+        			  res.write(JSON.stringify({ items: list }));
+        			  res.end();
+        		  }// if
+        	  });//함수
+			
+		} else {
+
+			i["heartPushed"] = false;
+			list.push(i);
+			count++;
+			
+			if (count == 20){
+				res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
+				res.write(JSON.stringify({ items: list }));
+				res.end();
+			}// if
+
+		}
           
         });
       });
@@ -103,111 +122,110 @@ app.get("/like.up", (req, res) => {
 	// 해야하는 기능) 해당 글 좋아요 count올리고 userpage에 해당글이 없으면 하나 생성 
 	const url = req.query.url;
 	
-	db.haheeho.find({_id : url}, function(e, result) {
-		let likeCount = result[0]["cd_like_count"];
-		likeCount++;
-		
-		const myQuery = {_id : url };
-		const newValue = {"$set": {cd_like_count : likeCount}};
-		
-		db.haheeho.updateOne(
-				myQuery, newValue, (e, result) => {
+	db.haheeho.updateOne(
+			{_id : url },
+			{ "$inc" : {cd_like_count : 1}},
+			(e, result) => {
+				
+				const memberID = req.query.memberID;
+				
+				db.haheehoUserPage.find({
+					"$and": [
+						{u_m_id : memberID},
+						{u_url : url}
+						]
+				}).count((e, result) => {
 					
-					const memberID = req.query.memberID;
-					
-					db.haheehoUserPage.find({
-						"$and": [
-							{u_m_id : memberID},
-							{u_url : url}
-							]
-					}).count((e, result) => {
-
-						if (result == 0) {
-							const title = req.query.title;
-							const label = req.query.label;
-							
-							db.haheehoUserPage.insertOne({
-								u_m_id : memberID,
-								u_url : url,
-								u_like : true,
-								u_memo : "",
-								u_title : title,
-								u_label : label
-							}, (e, result) => {
-								res.send("끝");
-							});
-							
-						}else{
-							db.haheehoUserPage.updateOne({
-								"$and": [
-									{u_m_id : memberID},
-									{u_url : url}
-									]
-							},{
-								"$set" : {u_like : true}
-							}, (e, result) => {
-								res.send("끝");
-							});
-						}
-							
+					if (result == 0) {
+						const title = req.query.title;
+						const label = req.query.label;
 						
-					});
+						db.haheehoUserPage.insertOne({
+							u_m_id : memberID,
+							u_url : url,
+							u_like : true,
+							u_memo : "",
+							u_title : title,
+							u_label : label
+						}, (e, result) => {
+							
+							res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
+							res.write(JSON.stringify({ temp : "t" }));
+							res.end();
+						});
+						
+					}else{
+						db.haheehoUserPage.updateOne({
+							"$and": [
+								{u_m_id : memberID},
+								{u_url : url}
+								]
+						},{
+							"$set" : {u_like : true}
+						}, (e, result) => {
+							res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
+							res.write(JSON.stringify({ temp : "t" }));
+							res.end();
+						});
+					}
+					
+					
 				});
-	});
+			});
+		
 });
 
 
 app.get("/like.down", (req, res) => {
 	// 해야하는 기능) 해당 글 좋아요 count올리고 userpage에 해당글이 없으면 하나 생성 
 	const url = req.query.url;
-	
-	db.haheeho.find({_id : url}, function(e, result) {
-		let likeCount = result[0]["cd_like_count"];
-		likeCount--;
 		
-		const myQuery = {_id : url };
-		const newValue = {"$set": {cd_like_count : likeCount}};
-		
-		db.haheeho.updateOne(
-				myQuery, newValue, (e, result) => {
+	db.haheeho.updateOne(
+			{ _id : url },
+			{"$inc" : { cd_like_count : -1 }},
+			(e, result) => {
+				
+				const memberID = req.query.memberID;
+				
+				db.haheehoUserPage.find({
+					"$and": [
+						{u_m_id : memberID},
+						{u_url : url}
+						]
+				}, (e, result) => {
 					
-					const memberID = req.query.memberID;
 					
-					db.haheehoUserPage.find({
-						"$and": [
-							{u_m_id : memberID},
-							{u_url : url}
-							]
-					}, (e, result) => {
-
-						if (result[0]["u_memo"] == "") {
-							
-							db.haheehoUserPage.remove({
-								"$and": [
-									{u_m_id : memberID},
-									{u_url : url}
-									]
-							}, (e, result) => {
-								res.send("끝");
-							});
-							
-						}else{
-							db.haheehoUserPage.updateOne({
-								"$and": [
-									{u_m_id : memberID},
-									{u_url : url}
-									]
-							},{
-								"$set" : {u_like : false}
-							}, (e, result) => {
-								res.send("끝");
-							});
-						}
-							
+					if (result[0]["u_memo"] == "") {
 						
-					});
+						db.haheehoUserPage.remove({
+							"$and": [
+								{u_m_id : memberID},
+								{u_url : url}
+								]
+						}, (e, result) => {
+							res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
+							res.write(JSON.stringify({ temp : "t" }));
+							res.end();
+						});
+						
+					}else{
+						db.haheehoUserPage.updateOne({
+							"$and": [
+								{u_m_id : memberID},
+								{u_url : url}
+								]
+						},{
+							"$set" : {u_like : false}
+						}, (e, result) => {
+							res.writeHead(200, { "Content-Type": "application/json;charset=utf-8", "Access-Control-Allow-Origin": "*" });
+							res.write(JSON.stringify({ temp : "t" }));
+							res.end();
+						});
+					}
+					
+					
 				});
-	});
+			});
 });
 
 // catch 404 and forward to error handler

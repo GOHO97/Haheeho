@@ -34,9 +34,7 @@
 							</tr>
 							<tr>
 								<td colspan="5" align="right">
-									<div
-										onclick="clickLikeUpButton(this.id, '${sessionScope.loginStatus.m_id }')"
-										id="${p }">
+									<div onclick="clickLikeUpButton(this.id)" id="${p }">
 										<img id="postLikeButton${p }" class="likeButton"
 											src="resources/img/emptyHeart.PNG" style="max-height: 40px;">
 										<span id="likeCount${p }"></span>
