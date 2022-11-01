@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<td colspan="2" align="center">
-	<input id="boardSearchTab" placeholder="게시판내 검색">
-	<span>검색<img src=""></span>
-</td>
+	<td colspan="2" align="center">
+		<input id="boardSearchTab" placeholder="게시판내 검색">
+		<span>검색<img src=""></span>
+	</td>
 </body>
 </html>

@@ -1,13 +1,18 @@
 @charset "UTF-8";
 
+::-webkit-scrollbar{
+	display: none;
+}
+
 #mainPostTable{
 	width: 600px;
 	height: 700px;
 }
 
 #mainPostDiv{
-	width: 80%;
-	margin-left: 90px;
+	width: 95%;
+	margin-left: 23px;
+	overflow: scroll;
 }
 
 

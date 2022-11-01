@@ -26,7 +26,7 @@ public class BoardController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/board.write.go", method = RequestMethod.POST)
+	@RequestMapping(value="/board.write.go", method = RequestMethod.GET)
 	public String boardPostGo(HttpServletRequest req) {
 //		if(mDAO.isLoggedIn) 해야됨
 		TokenGenerator.generate(req);

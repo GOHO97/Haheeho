@@ -8,7 +8,11 @@
 </head>
 <body>
 	<table id="userPageTable">
-		
+		<tr>
+			<td>
+				회원 개인 기록 페이지
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

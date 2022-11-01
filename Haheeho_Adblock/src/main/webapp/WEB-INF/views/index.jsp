@@ -34,7 +34,9 @@
 	<table border="1" class="mainPageTable" id="mainTable">
 		<tr>
 			<td rowspan="3" colspan="2">
-				<jsp:include page="${contentPage }"></jsp:include>
+				<div id="mainPostDiv">
+					<jsp:include page="${contentPage }"></jsp:include>
+				</div>
 			</td>
 			<td align="center" id="mainMemberTbl" valign="top">
 				<table border="1">

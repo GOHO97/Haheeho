@@ -12,7 +12,7 @@
 		<tr>
 			<td align="center">
 				<button id="btn-image">
-					<img src="images.png" id="images-img">
+					<img src="resources/img/images.png" id="images-img">
 				</button>
 				<input id="imgSelector" type="file" accept="image/*"/>
 			</td>
@@ -48,17 +48,17 @@
 			</td>
 			<td align="center">
 				<button id="btn-align-left">
-					<img src="font_left.png" id="btn-align-left-img">
+					<img src="resources/img/font_left.png" id="btn-align-left-img">
 				</button>
 			</td>
 			<td align="center">
 				<button id="btn-align-center">
-					<img src="font_center.png" id="btn-align-center-img">
+					<img src="resources/img/font_center.png" id="btn-align-center-img">
 				</button>
 			</td>
 			<td align="center">
 				<button id="btn-align-right">
-					<img src="font_right.png" id="btn-align-right-img">
+					<img src="resources/img/font_right.png" id="btn-align-right-img">
 				</button>
 			</td>
 			<td>
