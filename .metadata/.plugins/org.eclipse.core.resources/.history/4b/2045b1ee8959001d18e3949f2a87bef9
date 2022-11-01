@@ -11,7 +11,7 @@
 
 #mainPostDiv{
 	width: 95%;
-	height: 95%;
+	height: 95%
 	margin-left: 23px;
 	overflow: scroll;
 }
