@@ -1,11 +1,11 @@
 -- VERSION_4
 -- START DISKCACHE_2
 D:\Haheeho_git\.metadata\.plugins\org.eclipse.core.resources\.projects\AiAdFilter\com.python.pydev.analysis\v2_indexcache
-AAFMain|1666574535000000000|D:\Haheeho_git\AiAdFilter\AAFMain.py
-AAFNaiveBayes|1666579472000000000|D:\Haheeho_git\AiAdFilter\AAFNaiveBayes.py
-AAFDAO|1666157940000000000|D:\Haheeho_git\AiAdFilter\AAFDAO.py
-AAFAdFilter|1666157940000000000|D:\Haheeho_git\AiAdFilter\AAFAdFilter.py
-ResponseSet|1666157940000000000|D:\Haheeho_git\AiAdFilter\ResponseSet.py
+AAFMain|1666929255566908000|D:\Haheeho_git\AiAdFilter\AAFMain.py
+AAFNaiveBayes|1666929232148929000|D:\Haheeho_git\AiAdFilter\AAFNaiveBayes.py
+AAFDAO|1666929213615907000|D:\Haheeho_git\AiAdFilter\AAFDAO.py
+AAFAdFilter|1666929207231165000|D:\Haheeho_git\AiAdFilter\AAFAdFilter.py
+ResponseSet|1666929277607364000|D:\Haheeho_git\AiAdFilter\ResponseSet.py
 -- END DISKCACHE
 -- START DICTIONARY
 12
@@ -47,8 +47,8 @@ aip|1|AiPredict!7&26@
 com|1|companyList!9&19@
 con|2|containsImgKeyword!6&18@containsKeywordList!6&18@
 cv|1|cv!10&27@
-fin|2|findAllContent!8&34@findContent!8&34@
-get|4|getImgSrcList!6&18@getResponse!11&42@getMainContainer!6&18@getMainFrameSrc!6&18@
+fin|1|findContent!8&34@
+get|5|getImgSrcList!6&18@getTrainContent!8&34@getResponse!11&42@getMainContainer!6&18@getMainFrameSrc!6&18@
 hea|1|header!9&19@
 img|1|imgKeywordList!9&19@
 ins|2|insertUrl!8&34@insertWithContent!8&34@

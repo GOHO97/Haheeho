@@ -1,4 +1,5 @@
 const searchInput = document.querySelector("#mainSearch");
+const searchBtn = document.querySelector("#mainSearchBtn");
 
 // const nodeUrl = "http://192.168.0.141:6822/search.blog?query=";
 const nodeUrl = "http://sdgn-djvemfu.tplinkdns.com:6776/search.blog?query=";
@@ -84,4 +85,5 @@ function connectMainPageSearchEvent(event) {
 	}
 }
 
+searchBtn.addEventListener("click", connectMainPageSearchEvent);
 searchInput.addEventListener("keyup", connectMainPageSearchEvent);

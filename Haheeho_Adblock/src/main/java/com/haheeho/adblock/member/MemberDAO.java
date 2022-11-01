@@ -18,6 +18,21 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession ss;
 	
+	public boolean isLoggedIn(HttpServletRequest req) {
+
+		Member m = (Member) req.getSession().getAttribute("loginStatus");
+		if (m != null) { // if a member
+			req.setAttribute("loginPage", "member/welcome.jsp");
+			req.setAttribute("userPage", "member/userPage.jsp");
+			return true;
+		} 
+		req.setAttribute("loginPage", "member/login.jsp");
+		req.setAttribute("userPage", "member/emptyUserPage.jsp");
+		return false;
+		
+	}
+	
+
 	public void join(Member m, HttpServletRequest req) {
 		String path = req.getSession().getServletContext().getRealPath("resources/img");
 		MultipartRequest mr = null;
@@ -73,6 +88,10 @@ public class MemberDAO {
 		} catch (Exception e) {
 			req.setAttribute("result", "로그인 실패[DB]");
 		}
+	}
+	
+	public void logout(HttpServletRequest req) {
+		req.getSession().setAttribute("loginStatus", null);
 	}
 	
 }

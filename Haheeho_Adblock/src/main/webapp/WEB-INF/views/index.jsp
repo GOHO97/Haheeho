@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Haheeho</title>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
-<script type="text/javascript" src="resources/js/JangValidChecker.js"></script>
+<script type="text/javascript" src="resources/js/validChecker.js"></script>
 <script type="text/javascript" src="resources/js/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/like.js"></script>
 <link rel="stylesheet" href="resources/css/index.css">
@@ -15,16 +15,17 @@
 <link rel="stylesheet" href="resources/css/search.css">
 <link rel="stylesheet" href="resources/css/userPage.css">
 <link rel="stylesheet" href="resources/css/member.css">
-<link rel="stylesheet" href="resources/css/board.css">
 </head>
 <body>
 	<table class="mainPageTable mainSearchArea" border="1">
 		<tr>
 			<td align="center" id="haheehoLogo" rowspan="2">
-				<img src="resources/img/haheehoLogo.png" style="width:150px;"></td>
+				<img src="resources/img/haheehoLogo.png" style="width:150px;">
+			</td>
 			<td colspan="2" align="center" id="mainTitle">
 				<a href="index.do" style="font-size: 24pt;">하희호 맛집 검색</a>
-				<br>(근데 이제 광고필터 기능이 곁들어진...)&nbsp;&nbsp;&nbsp;&nbsp;<span>${result }</span></td>
+				<br><span>${result }</span>
+			</td>
 		</tr>
 		<tr>
 			<jsp:include page="${searchBar }"></jsp:include>
@@ -63,7 +64,7 @@
 			</td>
 		</tr>
 	</table>
-	<div id="loginID" style="position: fixed; left: -2000px; ">${sessionScope.loginStatus.m_id }</div>
+	<div id="loginID" style="display: none;">${sessionScope.loginStatus.m_id }</div>
 </body>
 <script type="text/javascript" src="resources/js/mainPost.js"></script>
 </html>

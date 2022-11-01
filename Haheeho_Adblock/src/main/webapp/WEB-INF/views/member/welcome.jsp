@@ -14,6 +14,7 @@
 		</tr>
 		<tr>
 			<td><button>회원정보 수정</button></td>
+			<td><a href="member.logout">로그아웃</a></td>
 		</tr>
 	</table>
 </form>

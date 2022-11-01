@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Haheeho_Adblock/src/main/webapp/resources/js/JangValidChecker.js&apos; to &apos;validChecker.js&apos;" description="Rename resource &apos;JangValidChecker.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/resources/js/JangValidChecker.js" name="validChecker.js" stamp="1667265091923" updateReferences="true"/>
+</session>

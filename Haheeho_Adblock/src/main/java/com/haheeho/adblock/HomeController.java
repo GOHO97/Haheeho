@@ -15,7 +15,7 @@ public class HomeController {
 		req.setAttribute("searchBar", "main/search.jsp");
 		req.setAttribute("contentPage", "main/main.jsp");
 		req.setAttribute("loginPage", "member/login.jsp");
-		req.setAttribute("userPage", "member/userPage.jsp");
+		req.setAttribute("userPage", "member/emptyUserPage.jsp");
 		return "index";
 	}
 	

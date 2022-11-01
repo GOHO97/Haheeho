@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.haheeho.adblock.TokenGenerator;
 import com.haheeho.adblock.member.MemberDAO;
 
 @Controller
@@ -25,9 +26,10 @@ public class BoardController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/board.post.go", method = RequestMethod.POST)
+	@RequestMapping(value="/board.write.go", method = RequestMethod.POST)
 	public String boardPostGo(HttpServletRequest req) {
 //		if(mDAO.isLoggedIn) 해야됨
+		TokenGenerator.generate(req);
 		req.setAttribute("searchBar", "board/boardSearch.jsp");
 		req.setAttribute("contentPage", "board/boardWrite.jsp");
 		req.setAttribute("loginPage", "member/welcome.jsp");

@@ -53,6 +53,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:memberMapper.xml</beans:value>
+				<beans:value>classpath:boardMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

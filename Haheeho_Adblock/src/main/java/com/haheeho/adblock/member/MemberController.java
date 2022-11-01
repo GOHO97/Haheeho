@@ -18,7 +18,7 @@ public class MemberController {
 		req.setAttribute("searchBar", "main/search.jsp");
 		req.setAttribute("contentPage", "main/main.jsp");
 		req.setAttribute("loginPage", "member/join.jsp");	
-		req.setAttribute("userPage", "member/userPage.jsp");
+		req.setAttribute("userPage", "member/emptyUserPage.jsp");
 		return "index";
 	}
 	
@@ -28,18 +28,28 @@ public class MemberController {
 		req.setAttribute("searchBar", "main/search.jsp");
 		req.setAttribute("contentPage", "main/main.jsp");
 		req.setAttribute("loginPage", "member/login.jsp");	
-		req.setAttribute("userPage", "member/userPage.jsp");
+		req.setAttribute("userPage", "member/emptyUserPage.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value="/member.login", method=RequestMethod.POST)
 	public String memberLoginDo(Member m, HttpServletRequest req) {
-		mDAO.login(m, req);
 		req.setAttribute("searchBar", "main/search.jsp");
 		req.setAttribute("contentPage", "main/main.jsp");
-		req.setAttribute("loginPage", "member/welcome.jsp");	
-		req.setAttribute("userPage", "member/userPage.jsp");
+		mDAO.login(m, req);
+		mDAO.isLoggedIn(req);
 		return "index";
 	}
+	
+	
+	@RequestMapping(value="/member.logout", method=RequestMethod.GET)
+	public String memberLogout(HttpServletRequest req) {
+		req.setAttribute("searchBar", "main/search.jsp");
+		req.setAttribute("contentPage", "main/main.jsp");
+		mDAO.logout(req);
+		mDAO.isLoggedIn(req);
+		return "index";
+	}
+	
 	
 }
