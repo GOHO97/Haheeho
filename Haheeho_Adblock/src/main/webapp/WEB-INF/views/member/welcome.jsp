@@ -7,16 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="member.info.update">
-	<table>
+	<table class="loginInputTable">
 		<tr>
-			<td>welcome ${sessionScope.loginStatus.m_username }</td>
+			<td align="center">
+				환영합니다<br>
+				${sessionScope.loginStatus.m_username }님
+			</td>
+			<td id="memberImgTd" align="center">
+				 <img src="resources/img/${sessionScope.loginStatus.m_photo }">
+			</td>
 		</tr>
 		<tr>
-			<td><button>회원정보 수정</button></td>
-			<td><a href="member.logout">로그아웃</a></td>
+			<td align="center">
+				<a href="member.info.update">정보 수정</a>
+			</td>
+			<td align="center">
+				<a href="member.logout">로그아웃</a>
+			</td>
 		</tr>
 	</table>
-</form>
 </body>
 </html>

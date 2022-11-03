@@ -18,22 +18,18 @@ public class BoardController {
 	
 	@RequestMapping(value="/board.go", method = RequestMethod.GET)
 	public String board(HttpServletRequest req) {
-//		if(mDAO.isLoggedIn)
+		mDAO.isLoggedIn(req);
 		req.setAttribute("searchBar", "board/boardSearch.jsp");
 		req.setAttribute("contentPage", "board/board.jsp");
-		req.setAttribute("loginPage", "member/welcome.jsp");
-		req.setAttribute("userPage", "member/userPage.jsp");
 		return "index";
 	}
 	
 	@RequestMapping(value="/board.write.go", method = RequestMethod.GET)
 	public String boardPostGo(HttpServletRequest req) {
-//		if(mDAO.isLoggedIn) 해야됨
+		mDAO.isLoggedIn(req);
 		TokenGenerator.generate(req);
 		req.setAttribute("searchBar", "board/boardSearch.jsp");
 		req.setAttribute("contentPage", "board/boardWrite.jsp");
-		req.setAttribute("loginPage", "member/welcome.jsp");
-		req.setAttribute("userPage", "member/userPage.jsp");
 		return "index";
 	}
 }

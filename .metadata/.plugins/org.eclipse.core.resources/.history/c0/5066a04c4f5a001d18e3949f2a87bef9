@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+#mainUserPageTable{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 88%;
+	height: 530px;
+	border: 2px solid #2962FF;
+	border-radius: 5px;
+}
+
+#mainUserPage{
+	width: 90%;
+	height: 90%;
+	padding: 10px;
+}
+
+#userPageScrollDiv{
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+}
+
+.userLogPageTable{
+	width: 100%;
+}
+

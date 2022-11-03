@@ -52,10 +52,10 @@ function appendTable(search){
 			$("#postLabel" + n).text(label);
 			
 			if(pushed){
-				$("#postLikeButton" + n).attr({"src": "resources/img/fullHeart.PNG"});
+				$("#" + n).attr({"src": "resources/img/fullHeart.png"});
 				$("#" + n).attr({"onclick":"clickLikeDownButton(this.id)"});
 			}else{
-				$("#postLikeButton" + n).attr({"src": "resources/img/emptyHeart.PNG"});
+				$("#" + n).attr({"src": "resources/img/emptyHeart.png"});
 				$("#" + n).attr({"onclick":"clickLikeUpButton(this.id)"});
 			}
 			
@@ -85,5 +85,11 @@ function connectMainPageSearchEvent(event) {
 	}
 }
 
-searchBtn.addEventListener("click", connectMainPageSearchEvent);
+function connectMainPageSearchBtnEvent() {
+	const search = searchInput.value;
+	searchInput.value = "";
+	appendTable(search);
+}
+
+searchBtn.addEventListener("click", connectMainPageSearchBtnEvent);
 searchInput.addEventListener("keyup", connectMainPageSearchEvent);

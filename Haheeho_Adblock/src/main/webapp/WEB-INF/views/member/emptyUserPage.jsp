@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table class="userLogPageTable">
 		<tr>
-			<td>
-				회원가입이나 로그인을 먼저 해주세요.
+			<td align="center">
+				로그인을 먼저 해주세요.
 			</td>
 		</tr>
 	</table>

@@ -6,6 +6,10 @@
     padding: 16px 24px;
     border: 1px solid #D6D6D6;
     border-radius: 4px;
+    box-shadow: 2px 2px 2px #BDBDBD;
+    height: 630px;
+    overflow: scroll;
+    
 }
 
 #imgSelector{
@@ -16,6 +20,10 @@
     width: 40px;
     height: 40px;
     text-align: center;
+    background-color: #EEEEEE;
+    border: 1px solid #D6D6D6;
+    border-radius: 4px;
+    color: #212121;
 }
 
 
@@ -27,4 +35,13 @@
     width: 60px;
     height: 40px;
     text-align: center;
+}
+
+#editor-menu{
+	border-top: 2px solid #757575;
+	border-left: 2px solid #757575;
+	border-right: 2px solid #757575;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: 2px 2px #BDBDBD;
 }

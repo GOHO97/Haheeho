@@ -6,14 +6,14 @@ function memberJoinCheck() {
 	var emailInput = document.memberJoinForm.m_email;
 	var photoInput = document.memberJoinForm.m_photo;
 	
-	if(emptyChk(idInput)||kOrSChk(idInput)||!containsChk(idInput, "!@#$%^&*()+~=-~?<>,*/'")||lengthMinChk(idInput, 3)) {
+	if(emptyChk(idInput)||kOrSChk(idInput)||lengthMinChk(idInput, 3)) {
 		alert("아이디 형식을 확인해주세요.")
 		idInput.value = "";
 		idInput.focus();
 		return false;
 	}
 	
-	if(emptyChk(usernameInput)||kOrSChk(usernameInput)||lengthMinChk(usernameInput, 5)){
+	if(emptyChk(usernameInput)||lengthMinChk(usernameInput, 2)){
 		alert("유저네임 형식을 확인해주세요.")
 		usernameInput.value="";
 		usernameInput.focus();
@@ -56,13 +56,19 @@ function memberJoinCheck() {
 		return false;
 	}
 	
+	let color = $("#idCheck").css("color");
+	if (color == "rgb(255, 0, 0)"){
+		alert("중복된 아이디입니다.");
+		return false;
+	}
 	
+	return true;
 }
 
 
 function memberLoginCheck() {
-	var idField = document.memberLoginForm.loginID;
-	var pwField = document.memberLoginForm.loginPW;
+	const idField = document.memberLoginForm.loginID;
+	const pwField = document.memberLoginForm.loginPW;
 	
 	if(emptyChk(idField) || emptyChk(pwField)) {
 		alert("로그인이 비어있습니다.")
@@ -72,4 +78,30 @@ function memberLoginCheck() {
 		
 		return false;
 	}
+	return true;
 }
+
+function connectJoinCheck() {
+	
+	$("#joinID").keyup(function() {
+		
+		const inputID = $("#joinID").val();
+		
+		if (inputID.length >= 3) {
+			$.getJSON("member.info.get?m_id=" + inputID, (res) => {
+				if(res.member[0] != null){
+					$("#idCheck").css("color", "red").css("font-size", "10pt");
+					$("#idCheck").text("중복된 아이디입니다.");
+				}else { 
+					$("#idCheck").css("color", "green").css("font-size", "10pt");
+					$("#idCheck").text("중복되지 않은 아이디입니다.");
+				}
+			});
+		}
+	});
+}
+
+
+$(function() {
+	connectJoinCheck();
+});

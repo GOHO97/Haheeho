@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="resources/css/boardWrite.css">
 </head>
 <body>
-	<table class="editor-menu">
+	<table id="editor-menu">
 		<tr>
 			<td align="center">
 				<button id="btn-image">

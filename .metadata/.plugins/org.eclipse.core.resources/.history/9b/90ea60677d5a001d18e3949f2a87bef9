@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+#searchTable{
+	height: 100px;
+}
+
+.mainSearchTable{
+	width: 950px;
+	padding-left: 30px;
+}
+
+.mainSearchTd{
+	width: 60%;
+}
+
+#mainSearch {
+	width: 100%;
+	height: 30px;
+}
+
+#boardSearch{
+	width: 100%;
+	height: 30px;
+}
+
+#mainSearchBtn{
+	background-color: #EF5E5A;
+	font-family: "a";
+	color: #FFE164;
+	height: 30px;
+	width: 10%;
+}
+
+#boardSearchBtn{
+	background-color: #EF5E5A;
+	font-family: "a";
+	color: #FFE164;
+	height: 30px;
+	width: 10%;
+	margin-left: 10px;
+}
+
+#btnMargin{
+	width:30%;
+}

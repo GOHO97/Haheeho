@@ -7,13 +7,13 @@ const likeDownURL = "http://sdgn-djvemfu.tplinkdns.com:6776/like.down"
 function clickLikeUpButton(buttonID) {
 
 	const memberID = document.getElementById("loginID").innerText;
-
-	if (memberID == null){
+	
+	if (memberID == ""){
 		alert("로그인 안함 또는 로그인 시간 만료");
 	}else if(workFinish){
 		workFinish = false;
 		
-		$("#postLikeButton" + buttonID).attr({"src": "resources/img/fullHeart.PNG"});
+		$("#" + buttonID).attr({"src": "resources/img/fullHeart.png"});
 		$("#" + buttonID).attr({"onclick":"clickLikeDownButton(this.id)"});
 
 		let likeCount = document.getElementById('likeCount' + buttonID).innerHTML;
@@ -41,12 +41,12 @@ function clickLikeDownButton(buttonID) {
 	
 	const memberID = document.getElementById("loginID").innerText;
 
-	if(memberID == null){
+	if(memberID == ""){
 		alert("로그인 안함 또는 로그인 시간 만료");
 	}else if(workFinish){
 		workFinish = false;
 
-		$("#postLikeButton" + buttonID).attr({"src": "resources/img/emptyHeart.PNG"});
+		$("#" + buttonID).attr({"src": "resources/img/emptyHeart.png"});
 		$("#" + buttonID).attr({"onclick":"clickLikeUpButton(this.id)"});
 		
 		let likeCount = document.getElementById('likeCount' + buttonID).innerHTML;

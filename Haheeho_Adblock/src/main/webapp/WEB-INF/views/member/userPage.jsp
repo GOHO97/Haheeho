@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="userPageTable">
+	<table class="userLogPageTable">
 		<tr>
-			<td>
+			<td align="center">
 				회원 개인 기록 페이지
 			</td>
 		</tr>

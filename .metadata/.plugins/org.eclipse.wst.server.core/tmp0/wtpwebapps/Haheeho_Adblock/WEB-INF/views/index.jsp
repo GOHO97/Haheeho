@@ -17,56 +17,96 @@
 <link rel="stylesheet" href="resources/css/member.css">
 </head>
 <body>
-	<table class="mainPageTable mainSearchArea" border="1">
+	<div id="backgroundImgDiv">
+		<img id="backgroundImg" src="resources/img/ramen.gif">
+	</div>
+	<div id="backgroundImgDiv2">
+		<img id="backgroundImg2" src="resources/img/pizza.gif">
+	</div>
+	<div id="haheehoLogoDiv">
+		<img src="resources/img/haheehoLogo.png">
+	</div>
+	<table id="backgroundColor">
 		<tr>
-			<td align="center" id="haheehoLogo" rowspan="2">
-				<img src="resources/img/haheehoLogo.png" style="width:150px;">
+			<td id="bgcTop">
 			</td>
-			<td colspan="2" align="center" id="mainTitle">
-				<a href="index.do" style="font-size: 24pt;">하희호 맛집 검색</a>
+		</tr>
+		<tr>
+			<td id="bgcBottom">
+			</td>
+		</tr>
+	</table>
+	<table class="mainPageTable" id="mainSearchArea">
+		<tr>
+			<td id="mainTitleTd" align="center">
+				<a href="index.do">HaHeeHo</a>
 				<br><span>${result }</span>
 			</td>
 		</tr>
 		<tr>
-			<jsp:include page="${searchBar }"></jsp:include>
+			<td align="center">
+				<jsp:include page="${searchBar }"></jsp:include>
+			</td>
 		</tr>
 	</table>
-	<table border="1" class="mainPageTable" id="mainTable">
+	<table class="mainPageTable" id="mainTable">
 		<tr>
-			<td rowspan="3" colspan="2">
+			<td id="mainPostTd" align="center">
 				<div id="mainPostDiv">
 					<jsp:include page="${contentPage }"></jsp:include>
 				</div>
 			</td>
-			<td align="center" id="mainMemberTbl" valign="top">
-				<table border="1">
+			<td id="mainMemberTd" align="center" valign="top">
+				<table id="menuTable">
 					<tr>
-						<td align="center" class="indexMemberMenu">
-							<a href="index.do">홈</a>
+						<td align="center" id="homeTabTd">
+							<a href="index.do">Home</a>
 						</td>
-						<td align="center" class="indexMemberMenu">
-							<a href="board.go">게시판</a>
+						<td align="center">
+							<a href="board.go">Board</a>
 						</td>
 					</tr>
 				</table>
-				<table border="1">
+				<table id="loginPageTable">
 					<tr>
-						<td align="center" id="mainLoginPage">
+						<td align="center">
 							<jsp:include page="${loginPage }"></jsp:include>
 						</td>
 					</tr>
 				</table>
-				<table border="1">
+				<table id="mainUserPageTable">
 					<tr>
-						<td rowspan="2" id="mainUserPage" align="center">
-							<jsp:include page="${userPage }"></jsp:include>
+						<td align="center" id="userTabTd">
+							<table id="userTabTable">
+								<tr>
+									<td align="center">
+										Like
+									</td>
+									<td align="center">
+										Memo
+									</td>
+									<td align="center">
+										Post
+									</td>
+									<td align="center">
+										Reply
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td id="mainUserPage" align="center">
+							<div id="userPageScrollDiv">
+								<jsp:include page="${userPage }"></jsp:include>
+							</div>	
 						</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	</table>
-	<div id="loginID" style="display: none;">${sessionScope.loginStatus.m_id }</div>
+	<div id="loginID" style="position: fixed; left: -2000px;">${sessionScope.loginStatus.m_id }</div>
 </body>
 <script type="text/javascript" src="resources/js/mainPost.js"></script>
 </html>

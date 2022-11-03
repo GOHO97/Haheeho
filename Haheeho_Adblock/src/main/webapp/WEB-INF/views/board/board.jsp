@@ -8,35 +8,79 @@
 <link rel="stylesheet" href="resources/css/board.css">
 </head>
 <body>
-	<table>
+	<table id="boardMainTable">
+		<div id="boardSearchResultDiv">
+			(검색어) 검색 결과			
+		</div>
 		<tr>
-			<td align="left">
-				(검색어) 검색 결과			
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
-				화살표 1 2 3 4 5 화살표
+			<td align="right" id="boardPageNum">
+				◁ &nbsp;&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp; ▷
 			</td>
 		</tr>
 		<tr>
 			<td align="center">
-				<table border="1" id="boardArea">
+				<table class="boardArea">
 					<tr>
-						<td>
-							<table>
-								<tr>
-									<td>
-										글쓴이
-									</td>
-									<td>
-										<a>글 제목</a>
-									</td>
-									<td>
-										작성 날짜
-									</td>
-								</tr>
-							</table>
+						<td class="boardUserName" align="center">
+							글쓴이
+						</td>
+						<td class="boardTitle" align="center">
+							<a>글 제목</a>
+						</td>
+						<td class="boardDate" align="center">
+							작성 날짜
+						</td>
+					</tr>
+				</table>
+				<table class="boardArea">
+					<tr>
+						<td class="boardUserName" align="center">
+							글쓴이
+						</td>
+						<td class="boardTitle" align="center">
+							<a>글 제목</a>
+						</td>
+						<td class="boardDate" align="center">
+							작성 날짜
+						</td>
+					</tr>
+				</table>
+				<table class="boardArea">
+					<tr>
+						<td class="boardUserName" align="center">
+							글쓴이
+						</td>
+						<td class="boardTitle" align="center">
+							<a>글 제목</a>
+						</td>
+						<td class="boardDate" align="center">
+							작성 날짜
+						</td>
+					</tr>
+				</table>
+				<table class="boardArea">
+					<tr>
+						<td class="boardUserName" align="center">
+							글쓴이
+						</td>
+						<td class="boardTitle" align="center">
+							<a>글 제목</a>
+						</td>
+						<td class="boardDate" align="center">
+							작성 날짜
+						</td>
+					</tr>
+				</table>
+				<table class="boardArea">
+					<tr>
+						<td class="boardUserName" align="center">
+							글쓴이
+						</td>
+						<td class="boardTitle" align="center">
+							<a>글 제목</a>
+						</td>
+						<td class="boardDate" align="center">
+							작성 날짜
 						</td>
 					</tr>
 				</table>

@@ -8,42 +8,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<table border="1" id="postArea"
-			style="display: none;">
+		<table id="postArea" style="display: none;">
 			<tr>
 				<td>
 					<c:forEach var="p" begin="0" end="19">
-						<table border="1" id="post${p }" class="posts">
+						<table id="post${p }" class="posts">
 							<tr>
-								<td class="adAlert mpdtop3" align="center" id="postLabel${p }">
+								<td class="adAlertTd" align="center" id="postLabel${p }">
 									판독중
 								</td>
-								<td class="adAlert mpdtop3" align="center">
+								<td class="imgTd" align="left">
 									<img id="postImg${p }" src="resources/img/ready.PNG" class="photo">
 								</td>
-								<td colspan="3" class="mpdtop3">
-								</td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
-								<td colspan="5" align="left" class="mpdtop3" class="blogName">
+								<td class="mpTitle" colspan="4" align="center" class="blogName">
 									<a id="postBlogName${p }"></a>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="5" align="right" class="mpdDate" id="postDate${p }">
-								</td>
-							</tr>
-							<tr id="MainPostContentTr">
-								<td colspan="5" class="mpdContent" id="postContent${p }">
+								<td class="mpDate" colspan="4" align="right" id="postDate${p }">
 								</td>
 							</tr>
 							<tr>
-								<td colspan="5" align="right">
-									<div onclick="clickLikeUpButton(this.id)" id="${p }">
-										<img id="postLikeButton${p }" class="likeButton"
-											src="resources/img/emptyHeart.PNG" style="max-height: 40px;">
-										<span id="likeCount${p }"></span>
-									</div>
+								<td class="mpContent" colspan="4"  id="postContent${p }">
+								</td>
+							</tr>
+							<tr>
+								<td class="mptd"></td>
+								<td class="mptd2"></td>
+								<td class="mpMemo" align="right">
+									<img src="resources/img/memo.png" style="max-width: 70px;">
+								</td>
+								<td class="mpHeart" align="right">
+									<img onclick="clickLikeUpButton(this.id)" id="${p }" class="likeButton"
+										src="resources/img/emptyHeart.PNG" style="max-width: 50px;">
+									<span id="likeCount${p }"></span>
 								</td>
 							</tr>
 						</table>

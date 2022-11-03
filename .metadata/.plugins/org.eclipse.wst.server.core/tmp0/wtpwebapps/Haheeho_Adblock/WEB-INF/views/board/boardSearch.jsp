@@ -7,9 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<td colspan="2" align="center">
-		<input id="boardSearchTab" placeholder="게시판내 검색">
-		<span>검색<img src=""></span>
-	</td>
+	<table class="mainSearchTable">
+		<tr>
+			<td class="mainSearchTd">
+				<input id="boardSearch" placeholder="맛집 검색">
+			</td>
+			<td align="left" id="boardSearchBtn">
+				Search!
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

@@ -22,7 +22,7 @@ function lengthMinChk(input, len){
 // <input>에 한글이나 특수문자 넣었을때
 // 넣었으면 true, 안 넣었으면 false
 function kOrSChk(input){
-	var noKS ="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+	var noKS ="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 	for (var i = 0; i < input.value.length; i++) {
 		if (noKS.indexOf(input.value[i]) == -1) {
 				return true;

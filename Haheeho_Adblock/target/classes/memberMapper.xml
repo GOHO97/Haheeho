@@ -7,4 +7,7 @@
 	<select id="getMemberByID" parameterType="com.haheeho.adblock.member.Member" resultType="com.haheeho.adblock.member.Member">
 		select * from adblock_member where m_id = #{m_id}
 	</select>
+	<select id="getMembersByID" parameterType="com.haheeho.adblock.member.Member" resultType="com.haheeho.adblock.member.Member">
+		select * from adblock_member where m_id = #{m_id}
+	</select>
 </mapper>
