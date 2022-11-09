@@ -9,7 +9,7 @@
 <body>
 	<table class="userLogPageTable">
 		<tr>
-			<td align="center">
+			<td align="center" id="userLogPage">
 				회원 개인 기록 페이지
 			</td>
 		</tr>

@@ -1,0 +1,10 @@
+const writeButton = document.getElementById('boardWriteButton');
+ 
+ 
+function submitBoard() {
+	const id = <%=(String)session.getAttribute("m_id")%>;
+	console.log(id);
+} 
+
+
+writeButton.addEventListener('click', () => {submitBoard()});

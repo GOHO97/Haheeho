@@ -1,6 +1,7 @@
 package com.haheeho.adblock.member;
 
 import java.io.File;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -19,6 +20,28 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession ss;
 	
+	public void delete(HttpServletRequest req) {
+		try {
+			Member m = (Member) req.getSession().getAttribute("loginStatus");
+			
+			if(ss.getMapper(MemberMapper.class).deleteMember(m) == 1) {
+
+				String path = req.getSession().getServletContext().getRealPath("resources/profileImg");
+				String photo = URLDecoder.decode(m.getM_photo(), "utf-8");
+				new File(path + "/" + photo).delete();
+				
+				req.setAttribute("result", "탈퇴성공");
+			} else {
+				
+				req.setAttribute("result", "탈퇴실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "탈퇴실패");
+		}
+	}
+	
+	
 	public boolean isLoggedIn(HttpServletRequest req) {
 
 		Member m = (Member) req.getSession().getAttribute("loginStatus");
@@ -32,7 +55,10 @@ public class MemberDAO {
 			req.setAttribute("userPage", "member/emptyUserPage.jsp");
 			return false;
 		}
-		
+	}
+	
+	public void getMemberInfo(HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginStatus");
 		
 	}
 	
@@ -43,7 +69,7 @@ public class MemberDAO {
 	}
 	
 	public void join(Member m, HttpServletRequest req) {
-		String path = req.getSession().getServletContext().getRealPath("resources/img");
+		String path = req.getSession().getServletContext().getRealPath("resources/profileImg");
 		MultipartRequest mr = null;
 		try {
 			mr = new MultipartRequest(req, path, 31457280, "utf-8", new DefaultFileRenamePolicy());
@@ -74,7 +100,7 @@ public class MemberDAO {
 				new File(path + "/" + mr.getFilesystemName("m_photo")).delete();
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			req.setAttribute("result", "회원가입 실패[DB2]");
 			new File(path + "/" + mr.getFilesystemName("m_photo")).delete();
 		}
@@ -87,7 +113,6 @@ public class MemberDAO {
 			if (dbMember != null) { 
 				if(inputmember.getM_pw().equals(dbMember.getM_pw())) {
 					req.getSession().setAttribute("loginStatus", dbMember);
-					req.setAttribute("result", "로그인 성공");
 				} else {
 					req.setAttribute("result", "로그인 실패: 비밀번호가 틀렸습니다.");
 				}
@@ -101,6 +126,67 @@ public class MemberDAO {
 	
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginStatus", null);
+	}
+	
+	public void update(Member m, HttpServletRequest req) {
+		String path = req.getSession().getServletContext().getRealPath("resources/profileImg");
+		MultipartRequest mr = null;
+		try {
+			mr = new MultipartRequest(req, path, 31457280, "utf-8", new DefaultFileRenamePolicy());
+		} catch (Exception e) {
+			req.setAttribute("result", "수정 실패[프로필 사진]");
+			return;
+		}
+		
+		Member loggedInMember = (Member) req.getSession().getAttribute("loginStatus");
+		String oldPhoto = loggedInMember.getM_photo();
+		String newPhoto = null;
+		try {
+			String id = mr.getParameter("m_id");
+			String username = mr.getParameter("m_username");
+			String pw = mr.getParameter("m_pw");
+			String email = mr.getParameter("m_email");
+			newPhoto = mr.getFilesystemName("m_photo");
+			if (newPhoto == null) {
+				newPhoto = oldPhoto;
+			} else {
+				newPhoto = URLEncoder.encode(newPhoto, "utf-8").replace("+", " ");
+			}
+			
+			m.setM_id(id);
+			m.setM_username(username);
+			m.setM_pw(pw);
+			m.setM_email(email);
+			m.setM_photo(newPhoto);
+			
+			if(ss.getMapper(MemberMapper.class).updateMemberInfo(m) == 1) {
+				req.setAttribute("result", "수정 성공");
+				req.getSession().setAttribute("loginStatus", m);
+				if(!newPhoto.equals(oldPhoto)) {
+					oldPhoto = URLDecoder.decode(oldPhoto, "utf-8");
+					new File(path + "/" + oldPhoto).delete();
+					// 이건 photo file 저장해줄때 
+//					new File (path + "/" + mr.getFilesystemName("m_photo"));
+				}
+			} else {
+				req.setAttribute("result", "수정 실패[DB]");
+				if (!newPhoto.equals(oldPhoto)) {
+					newPhoto = URLDecoder.decode(newPhoto, "utf-8");
+					new File(path + "/" + newPhoto).delete();
+				}
+			}
+		} catch (Exception e) {
+			req.setAttribute("result", "수정 실패");
+			if (!newPhoto.equals(oldPhoto)) {
+				try {
+					newPhoto = URLDecoder.decode(newPhoto, "utf-8");
+				} catch (Exception e2) {
+				}
+				new File(path + "/" + newPhoto).delete();
+			}
+			
+		}
+		
 	}
 	
 }

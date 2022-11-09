@@ -10,13 +10,28 @@
 <script type="text/javascript" src="resources/js/validChecker.js"></script>
 <script type="text/javascript" src="resources/js/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/like.js"></script>
+<script type="text/javascript" src="resources/js/memo.js"></script>
+<script type="text/javascript" src="resources/js/userPage.js"></script>
+<script type="text/javascript">
+function showResult(result) {
+	alert(result);
+}
+</script>
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/mainPost.css">
 <link rel="stylesheet" href="resources/css/search.css">
 <link rel="stylesheet" href="resources/css/userPage.css">
 <link rel="stylesheet" href="resources/css/member.css">
+<link rel="stylesheet" href="resources/css/boardWrite.css">
 </head>
-<body>
+<c:choose>
+	<c:when test="${result !=null }">
+		<body onload="showResult('${result }');"> 
+	</c:when>
+	<c:otherwise>
+		<body>
+	</c:otherwise>
+</c:choose>
 	<div id="backgroundImgDiv">
 		<img id="backgroundImg" src="resources/img/ramen.gif">
 	</div>
@@ -40,7 +55,6 @@
 		<tr>
 			<td id="mainTitleTd" align="center">
 				<a href="index.do">HaHeeHo</a>
-				<br><span>${result }</span>
 			</td>
 		</tr>
 		<tr>
@@ -63,7 +77,7 @@
 							<a href="index.do">Home</a>
 						</td>
 						<td align="center">
-							<a href="board.go">Board</a>
+							<a href="board.go?page=1">Board</a>
 						</td>
 					</tr>
 				</table>
@@ -79,11 +93,8 @@
 						<td align="center" id="userTabTd">
 							<table id="userTabTable">
 								<tr>
-									<td align="center">
-										Like
-									</td>
-									<td align="center">
-										Memo
+									<td align="center" colspan="2">
+										<span id="userPageLikeButton" onclick="userPageLike()">Like & Memo</span>
 									</td>
 									<td align="center">
 										Post

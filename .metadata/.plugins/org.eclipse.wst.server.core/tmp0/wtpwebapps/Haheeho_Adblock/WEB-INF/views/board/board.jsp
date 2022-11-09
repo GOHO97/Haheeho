@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,76 +16,34 @@
 		</div>
 		<tr>
 			<td align="right" id="boardPageNum">
-				◁ &nbsp;&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp; ▷
+				<c:if test="${param.page != 1}">
+					<a href="board.go?page=${param.page - 1}">◁</a>
+				</c:if>	
+				<c:forEach var="i" begin="1" end="${pageCount }">
+					<a href="board.go?page=${i }&search=${search }">${i }</a>
+				</c:forEach>
+				<c:if test="${param.page != pageCount}">
+					<a href="board.go?page=${param.page + 1}">▷</a>
+				</c:if>	
 			</td>
 		</tr>
 		<tr>
 			<td align="center">
-				<table class="boardArea">
-					<tr>
-						<td class="boardUserName" align="center">
-							글쓴이
-						</td>
-						<td class="boardTitle" align="center">
-							<a>글 제목</a>
-						</td>
-						<td class="boardDate" align="center">
-							작성 날짜
-						</td>
-					</tr>
-				</table>
-				<table class="boardArea">
-					<tr>
-						<td class="boardUserName" align="center">
-							글쓴이
-						</td>
-						<td class="boardTitle" align="center">
-							<a>글 제목</a>
-						</td>
-						<td class="boardDate" align="center">
-							작성 날짜
-						</td>
-					</tr>
-				</table>
-				<table class="boardArea">
-					<tr>
-						<td class="boardUserName" align="center">
-							글쓴이
-						</td>
-						<td class="boardTitle" align="center">
-							<a>글 제목</a>
-						</td>
-						<td class="boardDate" align="center">
-							작성 날짜
-						</td>
-					</tr>
-				</table>
-				<table class="boardArea">
-					<tr>
-						<td class="boardUserName" align="center">
-							글쓴이
-						</td>
-						<td class="boardTitle" align="center">
-							<a>글 제목</a>
-						</td>
-						<td class="boardDate" align="center">
-							작성 날짜
-						</td>
-					</tr>
-				</table>
-				<table class="boardArea">
-					<tr>
-						<td class="boardUserName" align="center">
-							글쓴이
-						</td>
-						<td class="boardTitle" align="center">
-							<a>글 제목</a>
-						</td>
-						<td class="boardDate" align="center">
-							작성 날짜
-						</td>
-					</tr>
-				</table>
+				<c:forEach var="b" items="${board}">
+					<table class="boardArea">
+						<tr>
+							<td class="boardUserName" align="center">
+								${b.b_m_username }
+							</td>
+							<td class="boardTitle" align="center">
+								<a href="board.show.content?b_number=${b.b_number }">${b.b_title }</a>
+							</td>
+							<td class="boardDate" align="center">
+								<fmt:formatDate value="${b.b_date }" pattern="yyyy년  MM월  dd일"/>
+							</td>
+						</tr>
+					</table>
+				</c:forEach>
 			</td>
 		</tr>
 		<tr>

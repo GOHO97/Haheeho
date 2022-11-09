@@ -1,0 +1,14 @@
+const writeButton = document.getElementById('boardWriteButton');
+ 
+ 
+function submitBoard() {
+	const b_m_id = document.getElementById('m_id');
+	const b_m_userName = document.get ElementById('m_userName');
+	const b_title = document.getElementById('b_title');
+	
+	console.log(b_m_id, b_m_userName, b_title);
+	
+} 
+
+
+writeButton.addEventListener('click', () => {submitBoard()});

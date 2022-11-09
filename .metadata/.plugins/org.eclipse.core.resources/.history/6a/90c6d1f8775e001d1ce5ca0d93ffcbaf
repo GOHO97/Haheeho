@@ -1,0 +1,7 @@
+const contentTd = document.getElementById("boardContentTd");
+
+function getContentFromMongo() {
+	
+}
+
+contentTd.addEventListener('load', () => {getContentFromMongo()});

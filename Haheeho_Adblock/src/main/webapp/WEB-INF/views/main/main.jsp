@@ -8,11 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<table id="postArea" style="display: none;">
+		<div id="mainSearchResultDiv" style="display: none;"></div>
+		<table id="postArea" >
 			<tr>
 				<td>
-					<c:forEach var="p" begin="0" end="19">
-						<table id="post${p }" class="posts">
+					<c:forEach var="p" begin="0" end="100">
+						<table id="post${p }" class="posts" style="display: none;">
 							<tr>
 								<td class="adAlertTd" align="center" id="postLabel${p }">
 									판독중
@@ -37,10 +38,11 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="mptd"></td>
-								<td class="mptd2"></td>
+								<td class="mptd" colspan="2">
+									<textarea class="memo" id="memo${p }" style="display: none;"></textarea>
+								</td>
 								<td class="mpMemo" align="right">
-									<img src="resources/img/memo.png" style="max-width: 70px;">
+									<img src="resources/img/closeMemo.png" onclick="clickMemoButton(${p })" id="memoButton${p }" style="max-width: 70px;">
 								</td>
 								<td class="mpHeart" align="right">
 									<img onclick="clickLikeUpButton(this.id)" id="${p }" class="likeButton"
@@ -54,4 +56,3 @@
 			</tr>
 		</table>
 </body>
-</html>

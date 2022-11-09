@@ -1,0 +1,17 @@
+const writeButton = document.getElementById('boardWriteButton');
+ 
+ 
+function submitBoard() {
+	const b_m_id = document.getElementById('m_id').value;
+	const b_m_userName = document.getElementById('m_userName').value;
+	const b_title = document.getElementById('b_title').value;
+	const b_content = document.getElementById("boardEditor");
+	
+	console.log(b_m_id, b_m_userName, b_title);
+	console.log(b_content);
+	
+	
+} 
+
+
+writeButton.addEventListener('click', () => {submitBoard()});

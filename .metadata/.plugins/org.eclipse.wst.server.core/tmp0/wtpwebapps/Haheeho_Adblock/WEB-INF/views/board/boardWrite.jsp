@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/boardWrite.css">
 </head>
 <body>
 	<table id="editor-menu">
@@ -74,14 +73,20 @@
 			</td>
 		</tr>
 	</table>
+	<div>
+		<input id="b_title" placeholder="제목 최대 20자" maxlength="20">
+	</div>
 	<div contenteditable="true" id="boardEditor">
 
 	</div>
-	<div>
-		<div id="hiddenInputDiv" style="display: none">
-			<input name="token" value="${token }" type="hidden">
-		</div>
+	<div id="boardSubmitDiv">
+		<button id="boardWriteButton">작성 완료</button>
+	</div>
+	<div style="display: none;">
+		<input id="m_id" value="${sessionScope.loginStatus.m_id }" type="hidden">
+		<input id="m_username" value="${sessionScope.loginStatus.m_username }" type="hidden">
 	</div>
 </body>
 <script type="text/javascript" src="resources/js/boardEditor.js"></script>
+<script type="text/javascript" src="resources/js/boardWrite.js"></script>
 </html>

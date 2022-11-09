@@ -14,7 +14,7 @@
 				${sessionScope.loginStatus.m_username }님
 			</td>
 			<td id="memberImgTd" align="center">
-				 <img src="resources/img/${sessionScope.loginStatus.m_photo }">
+				 <img src="resources/profileImg/${sessionScope.loginStatus.m_photo }">
 			</td>
 		</tr>
 		<tr>

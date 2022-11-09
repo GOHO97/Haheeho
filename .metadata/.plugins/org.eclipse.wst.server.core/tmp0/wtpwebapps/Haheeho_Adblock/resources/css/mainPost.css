@@ -32,9 +32,9 @@
 .adAlertTd {
 	width: 120px;
 	height: 30px;
-	border-top: 2px solid #ff8288;
-	border-left: 2px solid #ff8288;
-	border-right: 2px solid #ff8288;
+	border-top: 2px solid #FFE164;
+	border-left: 2px solid #FFE164;
+	border-right: 2px solid #FFE164;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
@@ -50,8 +50,8 @@
 
 .mpTitle{
 	height: 50px;
-	border-left: 2px solid #ff8288;
-	border-bottom: 2px solid #ff8288;
+	border-left: 2px solid #FFE164;
+	border-bottom: 2px solid #FFE164;
 	border-bottom-left-radius: 5px;
 	background-color: #EFEFEB;
 }
@@ -59,35 +59,50 @@
 .mpDate {
 	padding-right: 30px;
 	height: 50px;
-	border-right: 2px solid #ff8288;
+	border-right: 2px solid #FFE164;
 	border-top-left-radius: 5px;
 }
 
 
 .mpContent {
 	height: 100px;
-	border-right: 2px solid #ff8288;
+	border-right: 2px solid #FFE164;
 	background-color: #EFEFEB;
 }
 
 .mpHeart{
-	border-right: 2px solid #ff8288;
-	border-bottom: 2px solid #ff8288;
+	border-right: 2px solid #FFE164;
+	border-bottom: 2px solid #FFE164;
 	border-bottom-right-radius: 5px;
 }
 
+.mpHeart img:hover{
+	cursor: pointer;
+}
+
 .mpMemo{
-	border-bottom: 2px solid #ff8288;
+	border-bottom: 2px solid #FFE164;
+	width: 50px;
+}
+
+.mpMemo img:hover{
+	cursor: pointer;
 }
 
 .mptd{
-	border-bottom: 2px solid #ff8288;
+	border-bottom: 2px solid #FFE164;
 	border-bottom-left-radius: 5px;
+	width: 600px;
 }
 
-.mptd2{
-	border-bottom: 2px solid #ff8288;
-	width: 500px;
+.mptd textarea{
+	width: 100%;
+	height: 40px;
+	border: 2px solid #FFE164;
+	border-radius: 5px;
+	resize: none;
+	background-color: #FAFAF5;
+	font-family: 'b';
 }
 
 .posts{
@@ -99,3 +114,11 @@
 	width: 100%;
 }
 
+#mainSearchResultDiv{
+	margin-top: 10px;
+	margin-right: 520px;
+	width: 30%;
+	height: 30px;
+	text-align: left;
+	border-bottom: 2px solid #FFE164;
+}

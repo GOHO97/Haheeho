@@ -1,0 +1,18 @@
+const contentTd = document.getElementById("boardContentTd");
+const sequenceNumber = document.getElementById("sequenceNumber").text;
+const getContentURL = "http://sdgn-djvemfu.tplinkdns.com:6776/board.get.content"
+
+function getContentFromMongo() {
+	console.log(sequenceNumber);
+	$.ajax({
+		type: "POST",
+		url: getContentURL,
+		data: {b_number: sequenceNumber},
+		success: (result) => {
+			alert(JSON.stringify(result));
+			//$("#boardContentTd").innerHTML(result["content"]);
+		}
+	});
+}
+
+contentTd.addEventListener('load', () => {getContentFromMongo()});

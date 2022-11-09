@@ -65,6 +65,66 @@ function memberJoinCheck() {
 	return true;
 }
 
+function memberUpdateCheck() {
+	var usernameInput = document.memberUpdateForm.m_username;
+	var pwInput = document.memberUpdateForm.m_pw;
+	var pwCheck = document.memberUpdateForm.checkpw;
+	var emailInput = document.memberUpdateForm.m_email;
+	var photoInput = document.memberUpdateForm.m_photo;
+
+	if(emptyChk(usernameInput)||lengthMinChk(usernameInput, 2)){
+		alert("유저네임 형식을 확인해주세요.")
+		usernameInput.value="";
+		usernameInput.focus();
+		return false;
+	}
+	
+	if(emptyChk(pwInput)||lengthMinChk(pwInput, 5)||containsChk(pwInput, '1234567890')&&containsChk(pwInput, "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM")) {
+		alert("비밀번호 형식을 확인해주세요.")
+		pwInput.value="";
+		pwInput.focus();
+		return false;
+	}
+	
+	if(emptyChk(pwCheck)) {
+		alert("비밀번호 확인칸이 비어있습니다.");
+		pwCheck.focus();
+		return false;
+	}
+	
+	if(pwChk(pwInput, pwCheck)){
+		alert("비밀번호와 일치하지 않습니다.");
+		pwInput.value="";
+		pwCheck.value="";
+		pwCheck.focus();
+		return false;
+	}
+	
+	if (emptyChk(emailInput)||containsChk(emailInput, "@")||(isNotFileType(emailInput, "com")&&isNotFileType(emailInput, "net"))) {
+		alert("이메일주소가 올바르지않습니다.");
+		emailInput.value="";
+		emailInput.focus();
+		return false;
+	}
+	
+	if ((isNotFileType(photoInput, "png")&&isNotFileType(photoInput, "jpg")&&isNotFileType(photoInput, "gif")&&isNotFileType(photoField, "jpeg"))) {
+		alert("프로필사진 형식이 올바르지않습니다.");
+		photoInput.value="";
+		photoInput.focus();
+		
+		return false;
+	}
+	
+	let color = $("#idCheck").css("color");
+	if (color == "rgb(255, 0, 0)"){
+		alert("중복된 아이디입니다.");
+		return false;
+	}
+	
+	return true;
+}
+
+
 
 function memberLoginCheck() {
 	const idField = document.memberLoginForm.loginID;
@@ -100,6 +160,7 @@ function connectJoinCheck() {
 		}
 	});
 }
+
 
 
 $(function() {

@@ -10,7 +10,7 @@
 	<table class="mainSearchTable">
 		<tr>
 			<td class="mainSearchTd">
-				<input id="boardSearch" placeholder="맛집 검색">
+				<input id="boardSearch" placeholder="게시판 검색">
 			</td>
 			<td align="left" id="boardSearchBtn">
 				Search!

@@ -14,6 +14,29 @@ public class MemberController {
 	@Autowired
 	private MemberDAO mDAO;
 	
+	
+	@RequestMapping(value="/member.info.update", method=RequestMethod.GET)
+	public String getMemberInfo(HttpServletRequest req) {
+		req.setAttribute("searchBar", "main/search.jsp");
+		if(mDAO.isLoggedIn(req)) {
+			mDAO.getMemberInfo(req);
+			req.setAttribute("contentPage", "member/info.jsp");
+		}
+		return "index";
+	}
+	
+	@RequestMapping(value="/member.delete", method=RequestMethod.GET)
+	public String memberDelete(Member m, HttpServletRequest req) {
+		req.setAttribute("searchBar", "main/search.jsp");
+		if(mDAO.isLoggedIn(req)) {
+			mDAO.delete(req);
+			mDAO.logout(req);
+			mDAO.isLoggedIn(req);
+		}
+		req.setAttribute("contentPage", "main/main.jsp");
+		return "index";
+	}
+	
 	@RequestMapping(value = "/member.join.go", method = RequestMethod.GET)
 	public String memberJoinGo(HttpServletRequest req) {
 		req.setAttribute("searchBar", "main/search.jsp");
@@ -35,20 +58,20 @@ public class MemberController {
 
 	@RequestMapping(value="/member.login", method=RequestMethod.POST)
 	public String memberLoginDo(Member m, HttpServletRequest req) {
-		req.setAttribute("searchBar", "main/search.jsp");
-		req.setAttribute("contentPage", "main/main.jsp");
 		mDAO.login(m, req);
 		mDAO.isLoggedIn(req);
+		req.setAttribute("searchBar", "main/search.jsp");
+		req.setAttribute("contentPage", "main/main.jsp");
 		return "index";
 	}
 	
 	
 	@RequestMapping(value="/member.logout", method=RequestMethod.GET)
 	public String memberLogout(HttpServletRequest req) {
-		req.setAttribute("searchBar", "main/search.jsp");
-		req.setAttribute("contentPage", "main/main.jsp");
 		mDAO.logout(req);
 		mDAO.isLoggedIn(req);
+		req.setAttribute("searchBar", "main/search.jsp");
+		req.setAttribute("contentPage", "main/main.jsp");
 		return "index";
 	}
 	
@@ -58,4 +81,16 @@ public class MemberController {
 		return mDAO.getMemberInfo(m);
 	}
 	
+	@RequestMapping(value="/member.update.do", method=RequestMethod.POST)
+	public String memberUpdate(Member m, HttpServletRequest req) {
+		if(mDAO.isLoggedIn(req)) {
+			mDAO.update(m, req);
+			mDAO.getMemberInfo(req);
+			req.setAttribute("contentPage", "member/info.jsp");
+		} else {
+			req.setAttribute("contentPage", "main/main.jsp");
+		}
+		req.setAttribute("searchBar", "main/search.jsp");
+		return "index";
+	}
 }

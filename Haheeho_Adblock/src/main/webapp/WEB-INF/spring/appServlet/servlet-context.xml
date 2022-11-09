@@ -63,5 +63,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
+	
+	<beans:bean class="com.haheeho.adblock.BoardPerPage">
+		<beans:property name="boardPerPage" value="5"></beans:property>
+	</beans:bean>
 
 </beans:beans>

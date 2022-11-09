@@ -65,7 +65,7 @@
 	max-width: 80px;
 }
 
-#joinTbl {
+#joinTbl, #updateTbl {
 	margin-top: 45px;
 	width: 70%;
 	height: 600px;
@@ -73,7 +73,7 @@
 	border-spacing: none;
 }
 
-#joinTitleTd{
+#joinTitleTd, #updateTitleTd{
 	background-color: #EF5E5A;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -82,7 +82,7 @@
 	color: #FFE164;
 }
 
-#joinSubmitTd{
+#joinSubmitTd, #updateSubmitTd{
 	width: 90%;
 	height: 60px;
 	background-color: #EF5E5A;
@@ -90,7 +90,7 @@
 	border-bottom-right-radius: 5px;
 }
 
-#joinSubmitTd button{
+#joinSubmitTd button, #updateSubmitTd button{
 	background-color: #EF5E5A;
 	border: none;
 	font-family: 'Galmuri7';
@@ -100,12 +100,12 @@
 }
 
 
-#joinSubmitTd button:hover{
+#joinSubmitTd button:hover, #updateSubmitTd button:hover{
 	color: #FFE16480;
 	cursor: pointer;
 }
 
-#joinTbl input{
+#joinTbl input, #updateTbl input{
 	width: 95%;
 	outline-style: none;
 	border-radius: 4px;
@@ -113,7 +113,7 @@
 }
 
 
-.joinInputInfoTd{
+.joinInputInfoTd, .updateInputInfoTd{
 	height: 35px;
 	width: 90%;
 }
