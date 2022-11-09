@@ -1,6 +1,6 @@
 # Naver blog ad block (demo)
   
-![mainPage](https://user-images.githubusercontent.com/101491213/198233349-1b1656de-57f2-4c4a-84b5-fd1a3d482d88.PNG)
+![image](https://user-images.githubusercontent.com/101491213/199681365-4afa25a7-4b3d-4dd7-beda-910d68ad8fdf.png)
   
 ### 팀원  
 윤경호  
@@ -13,15 +13,15 @@
 기존 보다 빠르게 신뢰성 있는 정보를 찾을 수 있게 도움을 주는 것이 해당 프로젝트의 목표이다.  
   
 로그인 기능 이용 시 아래의 정보를 이용 해주시면 됩니다.  
-ID : a  
-PW : a  
+ID : aaaaa  
+PW : aaaa1  
   
 ## 남은 과제  
 
 1. Js 파일 코드 리뷰 및 최적화
-2. 게시물 좋아요, 메모 기능 구현
-3. Spring을 이용한 WAS 구축
-4. UI, UX 디자인
+2. 게시물 메모 기능 구현
+3. 게시판 글 작성 및 조회, 댓글 기능 구현 
+4. 유저 개인 페이지 기능 구현
 5. Ubuntu 환경에서의 배포  
   
 ## 프로젝트 상세 문서  
