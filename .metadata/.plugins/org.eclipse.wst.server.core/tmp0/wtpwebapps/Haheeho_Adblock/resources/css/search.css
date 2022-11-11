@@ -34,3 +34,17 @@
 	cursor: pointer;
 	color: #FFE16480;
 }
+
+.customizeTab {
+	font-family: "b";
+	font-size: 11pt;
+	width: 50%;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#viewCount {
+	font-family: "b";
+	width: 40px;
+	height: 20px;
+}

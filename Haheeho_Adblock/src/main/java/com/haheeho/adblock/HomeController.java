@@ -35,7 +35,7 @@ public class HomeController {
 		mDAO.isLoggedIn(req);
 		req.setAttribute("searchBar", "main/search.jsp");
 		req.setAttribute("contentPage", "main/main.jsp");
-	
+		
 		return "index";
 	}
 	

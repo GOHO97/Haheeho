@@ -77,11 +77,9 @@
 			</tr>
 		</table>
 		<div id="titleDiv" style="display: none;">
-			<input id="b_title" placeholder="제목 최대 20자" maxlength="20">
+			<input id="b_title" placeholder="제목 최대 20자" maxlength="20" autofocus="autofocus">
 		</div>
-		<div contenteditable="true" id="boardEditor" style="display: none;">
-	
-		</div>
+		<div contenteditable="true" id="boardEditor" style="display: none;"></div>
 		<div id="boardSubmitDiv" style="display: none;">
 			<button id="cancelModifyButton">취소</button>
 			<button id="boardModifyButton">작성 완료</button>
@@ -89,6 +87,7 @@
 	</c:if>
 <!-- 밑에서 부터 콘텐츠 내용. 로그인 아이디랑 글 작성 아이디가 일치할 경우에만 위 태그들을 생성하고
 	 수정 버튼 클릭 시 위 태그들의 display: none 속성을 제거할 것. -->
+	<button id="goListButton">글 목록</button>
 	<table id="contentTable">
 		<tr>
 			<td id="sequenceNumber" style="display: none;">${board.b_number }</td>
@@ -106,9 +105,12 @@
 		</tr>
 		<tr>
 			<td id="contentTd" colspan="2" align="center">
-				<div id="contentDiv">
-				
-				</div>
+				<c:if test="${sessionScope.loginStatus.m_id != null }">
+					<div id="commentBtnDiv">
+						<button id="commentButton" onclick="viewComment('${board.b_number }')">댓글</button>
+					</div>
+				</c:if>
+				<div id="contentDiv"></div>
 			</td>
 		</tr>
 		<c:if test="${board.b_m_id == sessionScope.loginStatus.m_id }">

@@ -9,8 +9,8 @@
 <body>
 	<table class="userLogPageTable">
 		<tr>
-			<td align="center">
-				로그인을 먼저 해주세요.
+			<td align="center" style="font-family: 'b';">
+				로그인 후 이용 가능합니다.
 			</td>
 		</tr>
 	</table>

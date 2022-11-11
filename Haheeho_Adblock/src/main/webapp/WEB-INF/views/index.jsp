@@ -8,9 +8,11 @@
 <title>Haheeho</title>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/validChecker.js"></script>
+<script type="text/javascript" src="resources/js/move.js"></script>
 <script type="text/javascript" src="resources/js/memberCheck.js"></script>
 <script type="text/javascript" src="resources/js/like.js"></script>
 <script type="text/javascript" src="resources/js/memo.js"></script>
+<script type="text/javascript" src="resources/js/comment.js"></script>
 <script type="text/javascript" src="resources/js/userPage.js"></script>
 <script type="text/javascript">
 function showResult(result) {
@@ -20,9 +22,10 @@ function showResult(result) {
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/mainPost.css">
 <link rel="stylesheet" href="resources/css/search.css">
-<link rel="stylesheet" href="resources/css/userPage.css">
 <link rel="stylesheet" href="resources/css/member.css">
 <link rel="stylesheet" href="resources/css/boardWrite.css">
+<link rel="stylesheet" href="resources/css/userPage.css">
+<link rel="stylesheet" href="resources/css/comment.css">
 </head>
 <c:choose>
 	<c:when test="${result !=null }">
@@ -66,6 +69,23 @@ function showResult(result) {
 	<table class="mainPageTable" id="mainTable">
 		<tr>
 			<td id="mainPostTd" align="center">
+				<div id="commentArea">
+					<table id="commentAreaTb">
+						<tr>
+							<td id="commentInputArea" align="center">
+								댓글 작성란<br>
+								<textarea id="commentInput" maxlength="80"></textarea>
+							</td>
+							<td>
+								<button id="commentInputBtn">작성</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="showCommentArea" align="center" colspan="2">
+							</td>
+						</tr>
+					</table>
+				</div>
 				<div id="mainPostDiv">
 					<jsp:include page="${contentPage }"></jsp:include>
 				</div>
@@ -94,13 +114,13 @@ function showResult(result) {
 							<table id="userTabTable">
 								<tr>
 									<td align="center" colspan="2">
-										<span id="userPageLikeButton" onclick="userPageLike()">Like & Memo</span>
+										<span id="userPageLikeButton" onclick="userPageLike();">Like & Memo</span>
 									</td>
-									<td align="center">
+									<td align="center" onclick="userPageBoard();">
 										Post
 									</td>
 									<td align="center">
-										Reply
+										<span id="userPageCommentButton" onclick="userPageComment();">Reply</span>
 									</td>
 								</tr>
 							</table>
@@ -108,9 +128,7 @@ function showResult(result) {
 					</tr>
 					<tr>
 						<td id="mainUserPage" align="center">
-							<div id="userPageScrollDiv">
-								<jsp:include page="${userPage }"></jsp:include>
-							</div>	
+							<jsp:include page="${userPage }"></jsp:include>
 						</td>
 					</tr>
 				</table>
@@ -118,6 +136,7 @@ function showResult(result) {
 		</tr>
 	</table>
 	<div id="loginID" style="position: fixed; left: -2000px;">${sessionScope.loginStatus.m_id }</div>
+	<div id="loginUserName" style="position: fixed; left: -2000px;">${sessionScope.loginStatus.m_username }</div>
 </body>
 <script type="text/javascript" src="resources/js/mainPost.js"></script>
 </html>

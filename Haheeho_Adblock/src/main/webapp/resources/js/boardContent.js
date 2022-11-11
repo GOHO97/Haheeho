@@ -13,10 +13,14 @@ $.ajax({
 	}
 });
 
+// 수정 이벤트
+
 const modifyButton = document.getElementById("contentModifyButton");
 const title = document.getElementById("contentTitleTd").innerText;
 
-modifyButton.addEventListener('click', () => {activeModify()});
+if(modifyButton != null){
+	modifyButton.addEventListener('click', () => {activeModify()});
+}
 
 const head = document.getElementsByTagName('head')[0];
 let modifyScript = null;
@@ -27,11 +31,11 @@ function activeModify() {
 	$("#b_title").val(title);
 	
 	document.getElementById("contentTable").style.display = "none";
+	goListButton.style.display = "none";
 	document.getElementById("editor-menu").style = "";
 	document.getElementById("titleDiv").style = "";
 	document.getElementById("boardEditor").style = "";
 	document.getElementById("boardSubmitDiv").style = "";
-	
 
 	modifyScript = document.createElement('script');
 	modifyScript.type = "text/javascript";
@@ -44,12 +48,17 @@ function activeModify() {
 	head.appendChild(writeScript);
 }
 
+// 수정 취소 이벤트
+
 const cancelModifyButton = document.getElementById("cancelModifyButton");
 
-cancelModifyButton.addEventListener('click', () => {cancelModify()});
+if(cancelModifyButton != null){
+	cancelModifyButton.addEventListener('click', () => {cancelModify()});
+}
 
 function cancelModify() {
 	document.getElementById("contentTable").style = "";
+	goListButton.style = "";
 	document.getElementById("editor-menu").style.display = "none";
 	document.getElementById("titleDiv").style.display = "none";
 	document.getElementById("boardEditor").style.display = "none";
@@ -62,26 +71,45 @@ function cancelModify() {
 	writeScript = null;
 }
 
+// 삭제 이벤트
 const deleteButton = document.getElementById("contentDeleteButton");
 
-deleteButton.addEventListener('click', () => {deleteContent()});
+if(deleteButton != null){
+	deleteButton.addEventListener('click', () => {deleteContent()});
+}
 
 function deleteContent() {
-	const deleteNodeURL = "http://sdgn-djvemfu.tplinkdns.com:6776/board.delete";
-	$.ajax({
-		type: "POST",
-		url: deleteNodeURL,
-		data: {b_number: sequenceNumber},
-		success: (end) => {
-		}
-	});
-	$.ajax({
-		type: "POST",
-		url: "board.delete",
-		data: {b_number: sequenceNumber},
-		success: (result) => {
-			location.href= "board.go?page=1";
-			alert(result["result"]);
-		}
-	});
+	if(prompt("게시글을 삭제하시겠습니까?")){
+		const deleteNodeURL = "http://sdgn-djvemfu.tplinkdns.com:6776/board.delete";
+		$.ajax({
+			type: "POST",
+			url: deleteNodeURL,
+			data: {b_number: sequenceNumber},
+			success: (end) => {
+			}
+		});
+		$.ajax({
+			type: "POST",
+			url: "board.delete",
+			data: {b_number: sequenceNumber},
+			success: (result) => {
+				location.href= "board.go?page=1";
+				alert(result["result"]);
+			}
+		});
+	}
+}
+
+// 글 목록으로 돌아가기 이벤트
+
+const goListButton = document.getElementById("goListButton");
+
+goListButton.addEventListener('click', () => {goList()});
+
+function goList() {
+	if(document.referrer.indexOf("write") == -1){
+		window.history.back();
+	} else {
+		location.href = "board.go?page=1";
+	}
 }

@@ -15,6 +15,7 @@
 	border-right: 2px solid #757575;
 	box-shadow: 2px 2px 2px #BDBDBD;
 	width: 100%;
+	background-color: #FFE16480;
 }
 
 
@@ -34,6 +35,16 @@
 	width: 25%;
 }
 
+#boardWriteButton{
+	background-color: #EF5E5A;
+	border: none;
+	font-family: "b";
+	font-size: 20px;
+	color: #FFE164;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
 #boardSearchResultDiv{
 	margin-right: 440px;
 	width: 400px;
@@ -47,6 +58,15 @@
 	text-align: center;
 }
 
+#boardSearchResultDiv span{
+	color: red;
+}
+
+#boardSearchResultDiv a{
+	font-size: 15px;
+	background-color: #EF5E5A30;
+	border-radius: 5px;
+}
 
 #boardPageNum{
 	border-left: 2px solid #757575;

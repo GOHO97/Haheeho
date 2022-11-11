@@ -63,7 +63,7 @@ function clickMemoButtonLikeUserPage(memoIndex) {
 		$("#memoButtonLikeUserPage" + memoIndex).attr({"onclick":
 			"clickMemoSaveButtonLikeUserPage(" + memoIndex + ")"});
 		$("#memoButtonLikeUserPage" + memoIndex).attr({"src":"resources/img/openMemo.png"});
-		$("#memoAreaLikeUserPage" + memoIndex).removeAttr("style");
+		$("#memoLikeUserPage" + memoIndex).removeAttr("style");
 		
 	}
 }
@@ -90,7 +90,7 @@ function clickMemoSaveButtonLikeUserPage(memoIndex) {
 			likeAndMemoFinish = true;
 			$("#memoButtonLikeUserPage" + memoIndex).attr({"onclick":
 				"clickMemoButtonLikeUserPage(" + memoIndex + ")"});
-			$("#memoAreaLikeUserPage" + memoIndex).attr({"style":"display : none"});
+			$("#memoLikeUserPage" + memoIndex).attr({"style":"display : none"});
 			
 			
 			try {

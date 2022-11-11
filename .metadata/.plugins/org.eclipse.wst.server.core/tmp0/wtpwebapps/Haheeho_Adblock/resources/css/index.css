@@ -110,7 +110,8 @@ input{
 	border-top: 3px solid #757575;
 	border-bottom: 3px solid #757575;
 	border-spacing: 0;
-	z-index: 0;
+	z-index: 3;
+	position: relative;
 }
 
 #menuTable{

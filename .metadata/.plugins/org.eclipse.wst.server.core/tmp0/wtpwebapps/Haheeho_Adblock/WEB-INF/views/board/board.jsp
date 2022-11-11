@@ -12,21 +12,43 @@
 <body>
 	<table id="boardMainTable">
 		<div id="boardSearchResultDiv">
-			(검색어) 검색 결과			
+			<c:if test="${param.search != null }">
+				<span>(${param.search })</span> 검색 결과 &nbsp;&nbsp;&nbsp;<a href="board.go?page=1" id="searchResetButton">검색어 초기화</a>&nbsp;&nbsp;&nbsp;
+			</c:if>
+			- ${param.page } -
 		</div>
-		<tr>
-			<td align="right" id="boardPageNum">
-				<c:if test="${param.page != 1}">
-					<a href="board.go?page=${param.page - 1}">◁</a>
-				</c:if>	
-				<c:forEach var="i" begin="1" end="${pageCount }">
-					<a href="board.go?page=${i }&search=${search }">${i }</a>
-				</c:forEach>
-				<c:if test="${param.page != pageCount}">
-					<a href="board.go?page=${param.page + 1}">▷</a>
-				</c:if>	
-			</td>
-		</tr>
+		<c:choose>
+			<c:when test="${param.search == null }">
+			<tr>
+				<td align="right" id="boardPageNum">
+					<c:if test="${param.page != 1}">
+						<a href="board.go?page=${param.page - 1}">◁</a>
+					</c:if>	
+					<c:forEach var="i" begin="1" end="${pageCount }">
+						<a href="board.go?page=${i }">${i }</a>
+					</c:forEach>
+					<c:if test="${param.page != pageCount}">
+						<a href="board.go?page=${param.page + 1}">▷</a>
+					</c:if>	
+				</td>
+			</tr>
+			</c:when>
+			<c:otherwise>
+			<tr>
+				<td align="right" id="boardPageNum">
+					<c:if test="${param.page != 1}">
+						<a href="${pageHref }?page=${param.page - 1}&search=${param.search}">◁</a>
+					</c:if>	
+					<c:forEach var="i" begin="1" end="${pageCount }">
+						<a href="${pageHref }?page=${i }&search=${param.search}">${i }</a>
+					</c:forEach>
+					<c:if test="${param.page != pageCount}">
+						<a href="${pageHref }?page=${param.page + 1}&search=${param.search}">▷</a>
+					</c:if>	
+				</td>
+			</tr>
+			</c:otherwise>
+		</c:choose>
 		<tr>
 			<td align="center">
 				<c:forEach var="b" items="${board}">
@@ -48,7 +70,9 @@
 		</tr>
 		<tr>
 			<td align="right">
-				<a href="board.write.go">글쓰기</a>
+				<button id="boardWriteButton" onclick="boardWriteGo();">
+					글쓰기
+				</button>
 			</td>
 		</tr>
 	</table>

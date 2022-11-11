@@ -84,7 +84,6 @@
 #contentTable{
 	width: 95%;
 	height: 95%;
-	margin-top: 18px;
 	border-spacing: 0;
 }
 
@@ -151,7 +150,19 @@
 	border-bottom-right-radius: 5px;
 }
 
-#contentDeleteButton:hover{
+#contentDeleteButton:hover, #goListButton:hover{
 	cursor: pointer;
 	color: #FFE16480;
+}
+
+#goListButton{
+	margin-left: 624px;
+	margin-top: 10px;
+	background-color: #EF5E5A;
+	border: none;
+	font-family: "b";
+	font-size: 20px;
+	color: #FFE164;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }

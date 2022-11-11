@@ -16,6 +16,30 @@
 				Search!
 			</td>
 		</tr>
+		<tr>
+			<td align="center">
+				<table>
+					<tr>
+						<td class="customizeTab">
+							정렬
+							<input type="radio" checked="checked" name="sort" value="sim">정확도순
+							<input type="radio" name="sort" value="date">최신순
+						</td>
+						<td class="customizeTab">
+							결과 조회
+							<select id="viewCount">
+								<option>20</option>
+								<option>40</option>
+								<option>60</option>
+								<option>80</option>
+								<option>100</option>
+							</select>
+							개씩
+						</td>
+					</tr> 
+				</table>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

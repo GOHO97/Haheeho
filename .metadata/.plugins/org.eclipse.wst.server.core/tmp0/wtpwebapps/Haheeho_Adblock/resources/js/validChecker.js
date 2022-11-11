@@ -19,21 +19,21 @@ function kOrSChk(input){
 function engOnly(input) {
 	var noKorean = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 	for (var i = 0; i < input.value.length; i++) {
-		if (noKorean.indexOf(input.value[i]) == -1) {
-				return true;
-		}
+		if (noKorean.indexOf(input.value[i]) != -1) {
+			return false;
+		} 
 	}
-	return false;
+	return true;
 }
 
 function typoChk(input){
 	var typo ="ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅣㅔㅐㅏㅜㅗㅓㅡㅟㅚㅑㅕㅛㅠㅒㅖㅘㅝㅙㅞㅢㄳㅄㅀㄶㄻㄾㄼㄺㄽㄿㄵ{}[]:\"!@#$%^&*()/'<>./,\_+=|\\\;?/";
 	for (var i = 0; i < input.value.length; i++) {
-		if (typo.indexOf(input.value[i]) == -1) {
-				return true;
+		if (typo.indexOf(input.value[i]) != -1) {
+			return false;
 		}
 	}
-	return false;
+	return true;
 }
 
 function pwChk(input, inputChk){

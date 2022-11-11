@@ -1,9 +1,0 @@
-const writeButton = document.getElementById('boardWriteButton');
- 
- 
-function submitBoard() {
-	
-} 
-
-
-writeButton.addEventListener('click', () => {submitBoard()});

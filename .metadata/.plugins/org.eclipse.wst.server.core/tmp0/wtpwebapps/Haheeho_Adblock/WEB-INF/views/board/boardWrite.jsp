@@ -74,11 +74,9 @@
 		</tr>
 	</table>
 	<div>
-		<input id="b_title" placeholder="제목 최대 20자" maxlength="20">
+		<input id="b_title" placeholder="제목 최대 20자" maxlength="20" autofocus="autofocus">
 	</div>
-	<div contenteditable="true" id="boardEditor">
-
-	</div>
+	<div contenteditable="true" id="boardEditor"></div>
 	<div id="boardSubmitDiv">
 		<button id="boardWriteButton">작성 완료</button>
 	</div>

@@ -14,9 +14,12 @@ if (document.querySelector("#mainSearch") != null){
 } else {
 	boardSearchInput = document.querySelector("#boardSearch");
 	boardsearchBtn = document.querySelector("#boardSearchBtn");
+	
+	boardSearchInput.addEventListener("keyup", connectBoardPageSearchEvent);
+	boardsearchBtn.addEventListener("click", connectBoardPageSearchBtnEvent);
 }
 
-
+// mainSearch 이벤트
 
 // const nodeUrl = "http://192.168.0.141:6822/search.blog?query=";
 const nodeUrl = "http://sdgn-djvemfu.tplinkdns.com:6776/search.blog?query=";
@@ -53,7 +56,17 @@ function appendTable(search){
 		queryID = "&memberID=" + loginID;
 	}
 	
-	$.getJSON(nodeUrl + search + queryID, (data) => {
+	const sort = $('input[name=sort]:checked').val();
+	const sortQuery = "&sort=" + sort;
+	
+	const viewCountElement = document.getElementById("viewCount");
+	const viewCount = viewCountElement.options[viewCountElement.selectedIndex].text
+	
+	const viewQuery = "&viewCount=" + viewCount;
+	
+	$("#guideTable").attr({"style":"display:none;"})
+	
+	$.getJSON(nodeUrl + search + sortQuery + viewQuery + queryID, (data) => {
 
 		$(".posts").attr("style", "display: none;")
 		$(".memo").attr("style", "display: none;")
@@ -139,3 +152,37 @@ function connectMainPageSearchBtnEvent() {
 	searchInput.value = "";
 }
 
+
+// boardSearch 이벤트
+
+function connectBoardPageSearchEvent() {
+	if(event.keyCode == 13){
+		const sortValue = document.querySelector('input[name="sort"]:checked').value;
+		const search = boardSearchInput.value;
+		boardSearchInput.value = "";
+		
+		if (sortValue == "b_title"){
+			location.href = `board.go?page=1&search=${search}`;
+		} else if(sortValue == "b_m_username") {
+			location.href = `board.search.username?page=1&search=${search}`;
+		} else {
+			alert("기능 구현 중입니다.");
+			boardSearchInput.focus();
+		}
+	}
+}
+
+function connectBoardPageSearchBtnEvent() {
+	const sortValue = document.querySelector('input[name="sort"]:checked').value;
+	const search = boardSearchInput.value;
+	boardSearchInput.value = "";
+
+	if (sortValue == "b_title"){
+		location.href = `board.go?page=1&search=${search}`;
+	} else if(sortValue == "b_m_username") {
+		location.href = `board.search.username?page=1&search=${search}`;
+	} else {
+		alert("기능 구현 중입니다.");
+		boardSearchInput.focus();
+	}
+}
