@@ -3,7 +3,7 @@
 #commentArea{
 	position: absolute;
 	z-index: 2;
-	bottom: 22px;
+	bottom: 20px;
 	left: 0px;
 	width: 300px;
 	height: 450px;

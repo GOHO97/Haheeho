@@ -79,7 +79,7 @@ if(deleteButton != null){
 }
 
 function deleteContent() {
-	if(confirm("게시글을 삭제하시겠습니까?")){
+	if(prompt("게시글을 삭제하시겠습니까?")){
 		const deleteNodeURL = "http://sdgn-djvemfu.tplinkdns.com:6776/board.delete";
 		$.ajax({
 			type: "POST",
@@ -107,7 +107,7 @@ const goListButton = document.getElementById("goListButton");
 goListButton.addEventListener('click', () => {goList()});
 
 function goList() {
-	if(document.referrer.indexOf("write") == -1 && document.referrer.indexOf("board") != -1){
+	if(document.referrer.indexOf("write") == -1){
 		window.history.back();
 	} else {
 		location.href = "board.go?page=1";

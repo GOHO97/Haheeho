@@ -150,6 +150,8 @@ function deleteComment(commentNumber, postNumber) {
 	const query = "comment.delete?c_number=" + commentNumber;
 	$.getJSON(query, (end) => {
 		getComment(postNumber);
+		
+		alert(end);
 	});
 		
 }

@@ -138,7 +138,6 @@ function modifyComment(commentNumber) {
 	const query = "comment.modify?c_number=" + commentNumber
 		+ "&c_content=" + commentTextValue;
 	$.getJSON(query, (end) => {
-		alert(end);
 	});
 		
 }
@@ -151,8 +150,6 @@ function deleteComment(commentNumber, postNumber) {
 	const query = "comment.delete?c_number=" + commentNumber;
 	$.getJSON(query, (end) => {
 		getComment(postNumber);
-		
-		alert(end);
 	});
 		
 }
