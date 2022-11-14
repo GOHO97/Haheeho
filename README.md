@@ -1,6 +1,7 @@
-# Naver blog ad block (demo)
+# Naver blog ad block  
   
-![image](https://user-images.githubusercontent.com/101491213/199681365-4afa25a7-4b3d-4dd7-beda-910d68ad8fdf.png)
+## 홈페이지 방문 주소  
+http://sdgn-djvemfu.tplinkdns.com:6886/adblock
   
 ### 팀원  
 윤경호  
@@ -12,17 +13,25 @@
 광고 필터링 검색 서비스로 검색 포털 서비스를 이용하는 유저들에게 
 기존 보다 빠르게 신뢰성 있는 정보를 찾을 수 있게 도움을 주는 것이 해당 프로젝트의 목표이다.  
   
-로그인 기능 이용 시 아래의 정보를 이용 해주시면 됩니다.  
-ID : aaaaa  
-PW : aaaa1  
+## 메인
+![image](https://user-images.githubusercontent.com/101491213/201604204-42cbf266-2fc7-4f14-83dd-7be5c4129a38.png)
   
-## 남은 과제  
-
-1. Js 파일 코드 리뷰 및 최적화
-2. 게시물 메모 기능 구현
-3. 게시판 글 작성 및 조회, 댓글 기능 구현 
-4. 유저 개인 페이지 기능 구현
-5. Ubuntu 환경에서의 배포  
+  
+## 회원 가입
+![image](https://user-images.githubusercontent.com/101491213/201606318-67054594-885c-41ce-95e3-4299b463248b.png)
+  
+  
+## 게시판
+![image](https://user-images.githubusercontent.com/101491213/201604853-7230eab9-69c7-41c3-b7f6-49048550148d.png)
+  
+  
+## 글 작성
+![image](https://user-images.githubusercontent.com/101491213/201605758-d1571c10-9cd5-45b9-bb71-50da47a7c402.png)
+  
+  
+## 게시글, 댓글
+![image](https://user-images.githubusercontent.com/101491213/201606007-254cb697-e02e-4ef4-be33-abdb89a8922b.png)
+  
   
 ## 프로젝트 상세 문서  
   
@@ -31,5 +40,4 @@ https://ubiquitous-sprite-121.notion.site/Naver-blog-ad-block-990d0c8e65f646e5bb
 ## 프로젝트 진행 과정(일지)  
   
 https://ubiquitous-sprite-121.notion.site/304496e05fc040fb98d56107821cea89
-  
   
