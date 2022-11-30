@@ -1,8 +1,5 @@
 # Naver blog ad block  
   
-### 홈페이지 방문 주소  
-http://sdgn-djvemfu.tplinkdns.com:6886/adblock
-  
 ### 팀원  
 윤경호  
 장준희  
